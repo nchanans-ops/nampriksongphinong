@@ -1986,7 +1986,7 @@
     document.querySelectorAll('.nav-item[data-page]').forEach(b=>b.addEventListener('click',()=>switchPage(b.dataset.page)));
     document.querySelectorAll('.ftab').forEach(t=>t.addEventListener('click',()=>{document.querySelectorAll('.ftab').forEach(x=>x.classList.remove('active'));t.classList.add('active');oFilter=t.dataset.filter;renderOrders();}));
     document.getElementById('topAddBtn').addEventListener('click',()=>{switchPage('products');resetForm();openModal('เพิ่มสินค้าใหม่');});
-    document.getElementById('viewStoreBtn').addEventListener('click',()=>window.open('vandee-shop.html','_blank'));
+    document.getElementById('viewStoreBtn').addEventListener('click',()=>window.open('index.html','_blank'));
     document.getElementById('addProdBtn').addEventListener('click',()=>{resetForm();openModal('เพิ่มสินค้าใหม่');});
     document.getElementById('modalClose').addEventListener('click',closeModal);
     document.getElementById('modalCancelBtn').addEventListener('click',closeModal);
