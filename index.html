@@ -1021,12 +1021,14 @@
     .slides-track {
       display: flex;
       height: 100%;
+      width: 100%;
       will-change: transform;
     }
     .slide {
       flex-shrink: 0;
       height: 100%;
-      width: 100vw;
+      width: 100%;
+      min-width: 100%;
       position: relative;
       display: flex;
       align-items: center;
@@ -2992,8 +2994,8 @@ nav .logo .logo-main,
   let current = 0, autoTimer;
 
   function applySlide(){
-    const w = heroEl.offsetWidth || window.innerWidth;
-    slides.forEach(s => { s.style.width = w + 'px'; });
+    const w = heroEl.getBoundingClientRect().width || window.innerWidth;
+    slides.forEach(s => { s.style.width = w + 'px'; s.style.minWidth = w + 'px'; });
     track.style.transition = 'none';
     track.style.transform  = `translateX(-${current * w}px)`;
   }
@@ -3004,7 +3006,7 @@ nav .logo .logo-main,
     current = (n + slides.length) % slides.length;
     slides[current].classList.add('active');
     indicators[current].classList.add('active');
-    const w = heroEl.offsetWidth || window.innerWidth;
+    const w = heroEl.getBoundingClientRect().width || window.innerWidth;
     track.style.transition = 'transform 0.75s cubic-bezier(0.77,0,0.18,1)';
     track.style.transform  = `translateX(-${current * w}px)`;
   }
