@@ -3295,6 +3295,13 @@ setInterval(loadProductsFromAdmin, 5000);`;
 })();
 
   /* ═══ BLOG MANAGEMENT ═══ */
+  function toast2(msg, type){
+    try {
+      const t=document.getElementById('toast'), m=document.getElementById('toastMsg');
+      if(m) m.textContent=msg;
+      if(t){ t.className='toast '+(type||'success'); t.classList.add('show'); clearTimeout(t._t); t._t=setTimeout(function(){ t.classList.remove('show'); },2800); }
+    } catch(e){}
+  }
   const KB = 'vandee_posts';
   let posts = [];
   let blogEditId = null;
@@ -3311,7 +3318,8 @@ setInterval(loadProductsFromAdmin, 5000);`;
   }
 
   function saveBlogPosts() {
-    localStorage.setItem(KB, JSON.stringify(posts));
+    try { localStorage.setItem(KB, JSON.stringify(posts)); return true; }
+    catch(e){ toast2('บันทึกไม่ได้: พื้นที่เก็บข้อมูลเต็ม ลองลบรูปปก/รูปในบทความออกแล้วลองใหม่','error'); return false; }
   }
 
   function renderBlogList() {
