@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin.html
 
-Sitemap: https://nchanans-ops.github.io/website-vandee/sitemap.xml
+Sitemap: https://nchanans-ops.github.io/nampriksongphinong/sitemap.xml

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://nchanans-ops.github.io/website-vandee/</loc>
+    <loc>https://nchanans-ops.github.io/nampriksongphinong/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://nchanans-ops.github.io/website-vandee/category.html</loc>
+    <loc>https://nchanans-ops.github.io/nampriksongphinong/category.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nchanans-ops.github.io/website-vandee/blog.html</loc>
+    <loc>https://nchanans-ops.github.io/nampriksongphinong/blog.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
