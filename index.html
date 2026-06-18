@@ -2538,6 +2538,22 @@ nav .logo .logo-main,
     }
   }
 
+  function syncPublishedProducts(){
+    fetch('products.json',{cache:'no-store'})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(pub){
+        if(!pub || !Array.isArray(pub.items)) return;
+        if(localStorage.getItem('vandee_products_pubver') !== String(pub.version)){
+          localStorage.setItem('vandee_products', JSON.stringify(pub.items));
+          localStorage.setItem('vandee_products_pubver', String(pub.version));
+        }
+        try{ renderProducts(); }catch(e){}
+        try{ buildNavDropdown(); }catch(e){}
+      })
+      .catch(function(){});
+  }
+  syncPublishedProducts();
+
   // Re-render when admin updates products in another tab
   window.addEventListener('storage', e => {
     if (e.key === 'vandee_products') { renderProducts(); buildNavDropdown(); }
