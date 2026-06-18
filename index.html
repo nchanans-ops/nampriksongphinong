@@ -2405,6 +2405,18 @@ nav .logo .logo-main,
   'use strict';
 
   /* ── Load Appearance Images from Admin ──────────────────────── */
+  (function(){
+    fetch('appearance.json',{cache:'no-store'})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(pub){
+        if(!pub || !pub.data) return;
+        if(localStorage.getItem('vandee_ap_ver') !== String(pub.version)){
+          localStorage.setItem('vandee_appearance', JSON.stringify(pub.data));
+          localStorage.setItem('vandee_ap_ver', String(pub.version));
+          location.reload();
+        }
+      }).catch(function(){});
+  })();
   (function loadAppearance(){
     try {
       const ap = JSON.parse(localStorage.getItem('vandee_appearance') || '{}');
