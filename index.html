@@ -1901,23 +1901,31 @@ nav .logo .logo-main,
   footer .footer-legal a{ color:rgba(255,255,255,0.5)!important; font-size:12.5px!important; }
 </style>
 <style id="bestseller-css">
-  .bestseller-section{ position:relative; background:linear-gradient(160deg,#fff6ec 0%,#f7e1c6 100%) !important;
-    border-top:4px solid #9A2A29; border-image:linear-gradient(90deg,#9A2A29,#e0a020) 1; }
-  .bestseller-section .section-label{ display:inline-block; background:linear-gradient(135deg,#9A2A29,#c0392b); color:#fff !important;
-    font-size:12px; font-weight:700; letter-spacing:0.14em; padding:6px 16px; border-radius:30px; margin-bottom:16px;
-    box-shadow:0 5px 14px rgba(154,42,41,0.30); }
-  .bestseller-section .section-title{ position:relative; padding-bottom:16px; }
-  .bestseller-section .section-title::after{ content:''; position:absolute; left:0; bottom:0; width:72px; height:5px;
-    border-radius:3px; background:linear-gradient(90deg,#9A2A29,#e0a020); }
-  .bs-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-  .bs-card{ background:#fff; border-radius:16px; overflow:hidden; border:1px solid #f0e2d2; position:relative;
-    box-shadow:0 10px 28px rgba(154,42,41,0.12); transition:transform .25s, box-shadow .25s; }
-  .bs-card:hover{ transform:translateY(-6px); box-shadow:0 18px 42px rgba(154,42,41,0.20); }
-  .bs-card:first-child{ border:2px solid #e0a020; box-shadow:0 12px 34px rgba(224,160,32,0.28); }
-  .bs-rank{ position:absolute; top:12px; left:12px; z-index:2; display:flex; align-items:center; gap:6px;
-    background:rgba(20,8,8,0.6); color:#fff; padding:6px 13px 6px 9px; border-radius:30px;
-    font-family:var(--thai); font-size:13px; font-weight:700; backdrop-filter:blur(4px); }
-  .bs-rank .medal{ font-size:18px; line-height:1; }
+  .bestseller-section{ position:relative; border-top:3px solid #e0a020;
+    background:linear-gradient(135deg,#250f0e 0%,#5e1816 55%,#7a1f1e 100%) !important; }
+  .bestseller-section .section-header{ text-align:center; }
+  .bestseller-section .section-label{ display:inline-block; background:linear-gradient(135deg,#f8de86,#e0a020);
+    color:#3a2400 !important; font-size:12.5px; font-weight:800; letter-spacing:0.12em; padding:7px 18px;
+    border-radius:30px; margin-bottom:18px; box-shadow:0 6px 18px rgba(224,160,32,0.35); }
+  .bestseller-section .section-title{ color:#ffffff !important; position:relative; padding-bottom:18px;
+    font-size:clamp(30px,4vw,46px); }
+  .bestseller-section .section-title::after{ content:''; position:absolute; left:50%; transform:translateX(-50%);
+    bottom:0; width:90px; height:5px; border-radius:3px; background:linear-gradient(90deg,#e0a020,#f8de86); }
+  .bestseller-section .section-sub{ color:rgba(255,255,255,0.82) !important; margin:0 auto; }
+  .bs-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
+  .bs-card{ background:#fff; border-radius:18px; overflow:hidden; position:relative;
+    box-shadow:0 16px 40px rgba(0,0,0,0.35); transition:transform .25s, box-shadow .25s; }
+  .bs-card:hover{ transform:translateY(-8px); box-shadow:0 24px 54px rgba(0,0,0,0.5); }
+  .bs-card:first-child{ transform:scale(1.05); border:3px solid #e0a020; z-index:1; }
+  .bs-card:first-child:hover{ transform:scale(1.05) translateY(-8px); }
+  .bs-rank{ position:absolute; top:14px; left:14px; z-index:3; display:flex; align-items:center; gap:8px;
+    padding:6px 16px 6px 6px; border-radius:40px; font-family:var(--thai); font-weight:800; font-size:14px;
+    color:#3a2400; box-shadow:0 6px 16px rgba(0,0,0,.3); }
+  .bs-num{ width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-family:var(--heading); font-weight:800; font-size:16px; color:#fff; }
+  .bs-rank-1{ background:linear-gradient(135deg,#f8de86,#e0a020); } .bs-rank-1 .bs-num{ background:#a9760a; }
+  .bs-rank-2{ background:linear-gradient(135deg,#eef1f4,#aab0b8); } .bs-rank-2 .bs-num{ background:#6b7178; }
+  .bs-rank-3{ background:linear-gradient(135deg,#ecbd92,#c87a3a); } .bs-rank-3 .bs-num{ background:#8a4e1e; }
   .bs-img{ width:100%; aspect-ratio:1/1; background:#f5f0e8; overflow:hidden; }
   .bs-img img{ width:100%; height:100%; object-fit:cover; }
   .bs-noimg{ width:100%; height:100%; display:flex; align-items:center; justify-content:center; }
@@ -1926,7 +1934,7 @@ nav .logo .logo-main,
   .bs-name{ font-family:var(--thai); font-size:17px; font-weight:700; color:var(--charcoal); margin-bottom:6px; }
   .bs-price{ font-family:var(--heading); font-size:24px; font-weight:800; color:var(--red); }
   .bs-unit{ font-family:var(--thai); font-size:13px; font-weight:400; color:var(--gray-mid); }
-  @media(max-width:768px){ .bs-grid{ grid-template-columns:1fr; gap:16px; } }
+  @media(max-width:768px){ .bs-grid{ grid-template-columns:1fr; gap:18px; } .bs-card:first-child{ transform:none; } .bs-card:first-child:hover{ transform:translateY(-8px); } }
 </style>
 </head>
 <body>
@@ -2665,12 +2673,11 @@ nav .logo .logo-main,
     let top=active.filter(isHot);
     active.forEach(p=>{ if(top.length<3 && top.indexOf(p)<0) top.push(p); });
     top=top.slice(0,3);
-    const medals=['\uD83E\uDD47','\uD83E\uDD48','\uD83E\uDD49'];
     grid.innerHTML=top.map((p,i)=>{
       const img = p.imgData ? `<img src="${esc(p.imgData)}" alt="${esc(p.name)}" loading="lazy">`
         : `<div class="bs-noimg" style="background:${esc(p.color||'#9A2A29')}"><span>${esc(p.label||p.name)}</span></div>`;
       return `<div class="bs-card">
-        <div class="bs-rank"><span class="medal">${medals[i]}</span>อันดับ ${i+1}</div>
+        <div class="bs-rank bs-rank-${i+1}"><span class="bs-num">${i+1}</span>อันดับ ${i+1}</div>
         <div class="bs-img">${img}</div>
         <div class="bs-body">
           <div class="bs-name">${esc(p.name)}</div>
