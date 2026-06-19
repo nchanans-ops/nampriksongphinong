@@ -1936,6 +1936,21 @@ nav .logo .logo-main,
   .bs-unit{ font-family:var(--thai); font-size:13px; font-weight:400; color:var(--gray-mid); }
   @media(max-width:768px){ .bs-grid{ grid-template-columns:1fr; gap:18px; } .bs-card:first-child{ transform:none; } .bs-card:first-child:hover{ transform:translateY(-8px); } }
 </style>
+<style id="dark-sections">
+  /* Match products & categories background to best-seller (dark red) */
+  .products-section, .categories-section{
+    background:linear-gradient(135deg,#250f0e 0%,#5e1816 55%,#7a1f1e 100%) !important;
+  }
+  .products-section .section-title, .categories-section .section-title{ color:#ffffff !important; }
+  .products-section .section-sub, .categories-section .section-sub{ color:rgba(255,255,255,0.80) !important; }
+  .products-section .section-label, .categories-section .section-label{
+    background:linear-gradient(135deg,#f8de86,#e0a020) !important; color:#3a2400 !important;
+    box-shadow:0 6px 18px rgba(224,160,32,0.35) !important;
+  }
+  .products-section .section-title::after, .categories-section .section-title::after{
+    background:linear-gradient(90deg,#e0a020,#f8de86) !important;
+  }
+</style>
 </head>
 <body>
 
