@@ -1093,6 +1093,9 @@
       <button class="nav-item" data-page="blog">
         <span class="nav-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>จัดการบทความ
       </button>
+      <button class="nav-item" data-page="bestseller">
+        <span class="nav-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.5 5.5 21 7.5 13.5 2 9 9 9"/></svg></span>สินค้าขายดี
+      </button>
     </nav>
     <div class="sb-label">ระบบ</div>
     <nav class="sb-nav">
@@ -1481,6 +1484,59 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="page" id="page-bestseller">
+      <div style="max-width:800px;font-family:var(--thai);">
+        <div style="font-size:13.5px;color:var(--text-3);margin-bottom:18px;line-height:1.7;">เลือกสินค้าขายดี 3 อันดับ เพื่อโชว์หน้าแรก — กรอกชื่อ ราคา และอัปโหลดรูป<br>(ถ้าเว้นว่างทั้งหมด หน้าแรกจะดึงสินค้าที่ติด Badge "ขายดี" ให้อัตโนมัติ)</div>
+      <div style="display:flex;gap:16px;align-items:center;background:var(--bg-2);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:14px;">
+        <div style="font-family:var(--heading);font-weight:800;font-size:15px;color:#e0a020;min-width:64px;text-align:center;">อันดับ 1</div>
+        <div style="text-align:center;">
+          <img id="bsImgPrev1" style="width:78px;height:78px;object-fit:cover;border-radius:10px;display:none;cursor:pointer;border:1px solid var(--border);margin-bottom:6px;">
+          <div><button type="button" id="bsImgBtn1" class="btn btn-ghost btn-sm">เลือกรูป</button></div>
+          <input type="file" id="bsImg1" accept="image/*" style="display:none;">
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:8px;">
+          <input id="bsName1" placeholder="ชื่อสินค้า" style="background:var(--bg-3);border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text-1);font-family:var(--thai);font-size:13.5px;outline:none;">
+          <div style="display:flex;gap:8px;">
+            <input id="bsPrice1" type="number" placeholder="ราคา (บาท)" style="background:var(--bg-3);border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text-1);font-family:var(--thai);font-size:13.5px;outline:none;width:150px;">
+            <input id="bsUnit1" placeholder="หน่วย เช่น กระปุก 45g" style="background:var(--bg-3);border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text-1);font-family:var(--thai);font-size:13.5px;outline:none;flex:1;">
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:16px;align-items:center;background:var(--bg-2);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:14px;">
+        <div style="font-family:var(--heading);font-weight:800;font-size:15px;color:#e0a020;min-width:64px;text-align:center;">อันดับ 2</div>
+        <div style="text-align:center;">
+          <img id="bsImgPrev2" style="width:78px;height:78px;object-fit:cover;border-radius:10px;display:none;cursor:pointer;border:1px solid var(--border);margin-bottom:6px;">
+          <div><button type="button" id="bsImgBtn2" class="btn btn-ghost btn-sm">เลือกรูป</button></div>
+          <input type="file" id="bsImg2" accept="image/*" style="display:none;">
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:8px;">
+          <input id="bsName2" placeholder="ชื่อสินค้า" style="background:var(--bg-3);border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text-1);font-family:var(--thai);font-size:13.5px;outline:none;">
+          <div style="display:flex;gap:8px;">
+            <input id="bsPrice2" type="number" placeholder="ราคา (บาท)" style="background:var(--bg-3);border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text-1);font-family:var(--thai);font-size:13.5px;outline:none;width:150px;">
+            <input id="bsUnit2" placeholder="หน่วย เช่น กระปุก 45g" style="background:var(--bg-3);border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text-1);font-family:var(--thai);font-size:13.5px;outline:none;flex:1;">
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:16px;align-items:center;background:var(--bg-2);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:14px;">
+        <div style="font-family:var(--heading);font-weight:800;font-size:15px;color:#e0a020;min-width:64px;text-align:center;">อันดับ 3</div>
+        <div style="text-align:center;">
+          <img id="bsImgPrev3" style="width:78px;height:78px;object-fit:cover;border-radius:10px;display:none;cursor:pointer;border:1px solid var(--border);margin-bottom:6px;">
+          <div><button type="button" id="bsImgBtn3" class="btn btn-ghost btn-sm">เลือกรูป</button></div>
+          <input type="file" id="bsImg3" accept="image/*" style="display:none;">
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:8px;">
+          <input id="bsName3" placeholder="ชื่อสินค้า" style="background:var(--bg-3);border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text-1);font-family:var(--thai);font-size:13.5px;outline:none;">
+          <div style="display:flex;gap:8px;">
+            <input id="bsPrice3" type="number" placeholder="ราคา (บาท)" style="background:var(--bg-3);border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text-1);font-family:var(--thai);font-size:13.5px;outline:none;width:150px;">
+            <input id="bsUnit3" placeholder="หน่วย เช่น กระปุก 45g" style="background:var(--bg-3);border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text-1);font-family:var(--thai);font-size:13.5px;outline:none;flex:1;">
+          </div>
+        </div>
+      </div>
+        <button id="bsAdminSave" class="btn btn-primary">บันทึกสินค้าขายดี</button>
+        <div style="font-size:12px;color:var(--text-3);margin-top:12px;line-height:1.6;">* บันทึกแล้วแสดงบนเครื่องนี้ทันที — ถ้าต้องการให้ขึ้นทุกอุปกรณ์ แจ้งผู้ดูแลให้ publish</div>
       </div>
     </div>
 
@@ -2002,7 +2058,7 @@
   });
 
 
-  const PAGE_META={dashboard:['ภาพรวม','ยินดีต้อนรับกลับมา, Admin'],products:['จัดการสินค้า','เพิ่ม แก้ไข และซ่อนสินค้า'],orders:['ออเดอร์','ดูและอัปเดตสถานะคำสั่งซื้อ'],stock:['สต็อคสินค้า','จัดการจำนวนสินค้าคงคลัง'],report:['รายงานยอดขาย','สรุปยอดรายวัน เดือน และปี'],blog:['จัดการบทความ','เพิ่ม แก้ไข และเผยแพร่บทความ'],appearance:['ตกแต่งหน้าร้าน','จัดการรูปภาพ Hero · หมวดหมู่ · แบรนด์'],settings:['ตั้งค่าระบบ','การเชื่อมต่อและสำรองข้อมูล']};
+  const PAGE_META={bestseller:['สินค้าขายดี','จัดการสินค้าขายดี 3 อันดับ'],dashboard:['ภาพรวม','ยินดีต้อนรับกลับมา, Admin'],products:['จัดการสินค้า','เพิ่ม แก้ไข และซ่อนสินค้า'],orders:['ออเดอร์','ดูและอัปเดตสถานะคำสั่งซื้อ'],stock:['สต็อคสินค้า','จัดการจำนวนสินค้าคงคลัง'],report:['รายงานยอดขาย','สรุปยอดรายวัน เดือน และปี'],blog:['จัดการบทความ','เพิ่ม แก้ไข และเผยแพร่บทความ'],appearance:['ตกแต่งหน้าร้าน','จัดการรูปภาพ Hero · หมวดหมู่ · แบรนด์'],settings:['ตั้งค่าระบบ','การเชื่อมต่อและสำรองข้อมูล']};
   let currentImgData = null;
 
   function bindAll(){
@@ -3539,7 +3595,64 @@ setInterval(loadProductsFromAdmin, 5000);`;
   window.switchPage = function(page) {
     _origSwitchPage(page);
     if (page === 'blog') renderBlogList();
+    if (page === 'bestseller') renderBestsellerAdmin();
   };
+
+  /* ── BEST SELLERS ADMIN ── */
+  var bsImgData={1:null,2:null,3:null};
+  function renderBestsellerAdmin(){
+    var arr=[]; try{ arr=JSON.parse(localStorage.getItem('vandee_bestsellers')||'[]'); }catch(e){}
+    for(var n=1;n<=3;n++){
+      var it=arr[n-1]||{};
+      var nm=document.getElementById('bsName'+n); if(!nm) continue;
+      nm.value=it.name||'';
+      document.getElementById('bsPrice'+n).value=it.price||'';
+      document.getElementById('bsUnit'+n).value=it.unit||'';
+      bsImgData[n]=it.img||null;
+      var pv=document.getElementById('bsImgPrev'+n);
+      if(it.img){ pv.src=it.img; pv.style.display='block'; } else { pv.style.display='none'; }
+    }
+  }
+  [1,2,3].forEach(function(n){
+    var inp=document.getElementById('bsImg'+n);
+    var btn=document.getElementById('bsImgBtn'+n);
+    var pv=document.getElementById('bsImgPrev'+n);
+    if(!inp) return;
+    btn.addEventListener('click',function(){ inp.click(); });
+    if(pv) pv.addEventListener('click',function(){ inp.click(); });
+    inp.addEventListener('change',function(e){
+      var f=e.target.files[0]; if(!f) return;
+      var rd=new FileReader();
+      rd.onload=function(ev){
+        var img=new Image();
+        img.onload=function(){
+          var max=640,w=img.width,h=img.height;
+          if(w>max||h>max){ if(w>=h){h=Math.round(h*max/w);w=max;} else {w=Math.round(w*max/h);h=max;} }
+          var c=document.createElement('canvas'); c.width=w; c.height=h;
+          c.getContext('2d').drawImage(img,0,0,w,h);
+          var d; try{ d=c.toDataURL('image/jpeg',0.72); }catch(err){ d=ev.target.result; }
+          bsImgData[n]=d; pv.src=d; pv.style.display='block';
+        };
+        img.src=ev.target.result;
+      };
+      rd.readAsDataURL(f); e.target.value='';
+    });
+  });
+  (function(){
+    var sb=document.getElementById('bsAdminSave');
+    if(!sb) return;
+    sb.addEventListener('click',function(){
+      var arr=[];
+      for(var n=1;n<=3;n++){
+        var name=(document.getElementById('bsName'+n).value||'').trim();
+        if(!name && !bsImgData[n]) continue;
+        arr.push({ name:name, price:+document.getElementById('bsPrice'+n).value||0,
+          unit:(document.getElementById('bsUnit'+n).value||'').trim(), img:bsImgData[n]||'' });
+      }
+      try{ localStorage.setItem('vandee_bestsellers', JSON.stringify(arr)); toast2('บันทึกสินค้าขายดีแล้ว','success'); }
+      catch(e){ toast2('บันทึกไม่ได้: พื้นที่เก็บข้อมูลเต็ม ลองลดขนาดรูป','error'); }
+    });
+  })();
 
 </script>
 

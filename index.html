@@ -2689,13 +2689,20 @@ nav .logo .logo-main,
   function renderBestSellers(){
     const grid=document.getElementById('bestSellerGrid');
     if(!grid) return;
-    let prods=[];
-    try{ prods=JSON.parse(localStorage.getItem('vandee_products')||'[]'); }catch(e){}
-    const active=prods.filter(p=>p.active!==false);
-    const isHot=p=>/ขายดี|hot|best|ฮิต/i.test(p.badge||'');
-    let top=active.filter(isHot);
-    active.forEach(p=>{ if(top.length<3 && top.indexOf(p)<0) top.push(p); });
-    top=top.slice(0,3);
+    let top=[];
+    let custom=[];
+    try{ custom=JSON.parse(localStorage.getItem('vandee_bestsellers')||'[]'); }catch(e){}
+    if(Array.isArray(custom) && custom.length){
+      top=custom.slice(0,3).map(it=>({name:it.name||'',price:it.price||0,unit:it.unit||'',imgData:it.img||'',color:'',label:''}));
+    } else {
+      let prods=[];
+      try{ prods=JSON.parse(localStorage.getItem('vandee_products')||'[]'); }catch(e){}
+      const active=prods.filter(p=>p.active!==false);
+      const isHot=p=>/ขายดี|hot|best|ฮิต/i.test(p.badge||'');
+      top=active.filter(isHot);
+      active.forEach(p=>{ if(top.length<3 && top.indexOf(p)<0) top.push(p); });
+      top=top.slice(0,3);
+    }
     grid.innerHTML=top.map((p,i)=>{
       const img = p.imgData ? `<img src="${esc(p.imgData)}" alt="${esc(p.name)}" loading="lazy">`
         : `<div class="bs-noimg" style="background:${esc(p.color||'#9A2A29')}"><span>${esc(p.label||p.name)}</span></div>`;
@@ -2718,6 +2725,7 @@ nav .logo .logo-main,
         if(localStorage.getItem('vandee_products_pubver') !== String(pub.version)){
           localStorage.setItem('vandee_products', JSON.stringify(pub.items));
           localStorage.setItem('vandee_products_pubver', String(pub.version));
+          if(Array.isArray(pub.bestsellers)) localStorage.setItem('vandee_bestsellers', JSON.stringify(pub.bestsellers));
         }
         try{ renderProducts(); }catch(e){}
         try{ buildNavDropdown(); }catch(e){}
