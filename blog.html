@@ -120,7 +120,7 @@
     .btn-read:hover { background: var(--red-deep); transform: translateY(-1px); }
 
     /* Grid */
-    .grid-title { font-family: var(--thai); font-size: 18px; font-weight: 700; color: var(--charcoal); margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid var(--cream-dark); }
+    .grid-title { font-family: var(--thai); font-size: 24px; font-weight: 800; color: var(--charcoal); margin-bottom: 24px; padding-bottom: 14px; position: relative; } .grid-title::after { content:''; position:absolute; left:0; bottom:0; width:64px; height:5px; border-radius:3px; background:linear-gradient(90deg,#9A2A29 0%,#e0a020 100%); }
     .posts-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
     .post-card { background: var(--white); border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--cream-dark); transition: box-shadow 0.28s, transform 0.28s; cursor: pointer; display: flex; flex-direction: column; }
     .post-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
@@ -408,7 +408,7 @@
       </div>`;
 
     if (rest.length) {
-      html += `<div class="grid-title">บทความอื่นๆ</div>
+      html += `<div class="grid-title">บทความอื่น</div>
         <div class="posts-grid">
           ${rest.map(p => {
             const img = p.coverImg
