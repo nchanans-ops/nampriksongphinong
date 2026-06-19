@@ -1900,6 +1900,34 @@ nav .logo .logo-main,
   footer .footer-copy{ color:rgba(255,255,255,0.5)!important; font-size:12.5px!important; }
   footer .footer-legal a{ color:rgba(255,255,255,0.5)!important; font-size:12.5px!important; }
 </style>
+<style id="bestseller-css">
+  .bestseller-section{ position:relative; background:linear-gradient(160deg,#fff6ec 0%,#f7e1c6 100%) !important;
+    border-top:4px solid #9A2A29; border-image:linear-gradient(90deg,#9A2A29,#e0a020) 1; }
+  .bestseller-section .section-label{ display:inline-block; background:linear-gradient(135deg,#9A2A29,#c0392b); color:#fff !important;
+    font-size:12px; font-weight:700; letter-spacing:0.14em; padding:6px 16px; border-radius:30px; margin-bottom:16px;
+    box-shadow:0 5px 14px rgba(154,42,41,0.30); }
+  .bestseller-section .section-title{ position:relative; padding-bottom:16px; }
+  .bestseller-section .section-title::after{ content:''; position:absolute; left:0; bottom:0; width:72px; height:5px;
+    border-radius:3px; background:linear-gradient(90deg,#9A2A29,#e0a020); }
+  .bs-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .bs-card{ background:#fff; border-radius:16px; overflow:hidden; border:1px solid #f0e2d2; position:relative;
+    box-shadow:0 10px 28px rgba(154,42,41,0.12); transition:transform .25s, box-shadow .25s; }
+  .bs-card:hover{ transform:translateY(-6px); box-shadow:0 18px 42px rgba(154,42,41,0.20); }
+  .bs-card:first-child{ border:2px solid #e0a020; box-shadow:0 12px 34px rgba(224,160,32,0.28); }
+  .bs-rank{ position:absolute; top:12px; left:12px; z-index:2; display:flex; align-items:center; gap:6px;
+    background:rgba(20,8,8,0.6); color:#fff; padding:6px 13px 6px 9px; border-radius:30px;
+    font-family:var(--thai); font-size:13px; font-weight:700; backdrop-filter:blur(4px); }
+  .bs-rank .medal{ font-size:18px; line-height:1; }
+  .bs-img{ width:100%; aspect-ratio:1/1; background:#f5f0e8; overflow:hidden; }
+  .bs-img img{ width:100%; height:100%; object-fit:cover; }
+  .bs-noimg{ width:100%; height:100%; display:flex; align-items:center; justify-content:center; }
+  .bs-noimg span{ color:#fff; font-weight:700; font-family:var(--thai); padding:10px; text-align:center; }
+  .bs-body{ padding:16px 18px 20px; }
+  .bs-name{ font-family:var(--thai); font-size:17px; font-weight:700; color:var(--charcoal); margin-bottom:6px; }
+  .bs-price{ font-family:var(--heading); font-size:24px; font-weight:800; color:var(--red); }
+  .bs-unit{ font-family:var(--thai); font-size:13px; font-weight:400; color:var(--gray-mid); }
+  @media(max-width:768px){ .bs-grid{ grid-template-columns:1fr; gap:16px; } }
+</style>
 </head>
 <body>
 
@@ -2281,6 +2309,18 @@ nav .logo .logo-main,
 </section>
 
 <!-- ─── PRODUCTS ───────────────────────────────────────────────── -->
+<!-- ─── BEST SELLERS ──────────────────────────────────────────── -->
+<section class="section bestseller-section" id="bestsellers">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <p class="section-label">ขายดีที่สุด</p>
+      <h2 class="section-title">สินค้าขายดี<br>3 อันดับ</h2>
+      <p class="section-sub">เมนูที่ลูกค้าสั่งซ้ำมากที่สุด — ห้ามพลาด!</p>
+    </div>
+    <div class="bs-grid" id="bestSellerGrid"></div>
+  </div>
+</section>
+
 <section class="section products-section" id="products">
   <div class="section-inner">
     <div class="section-header reveal">
@@ -2612,6 +2652,32 @@ nav .logo .logo-main,
         });
       });
     }
+    if(typeof renderBestSellers==='function') renderBestSellers();
+  }
+
+  function renderBestSellers(){
+    const grid=document.getElementById('bestSellerGrid');
+    if(!grid) return;
+    let prods=[];
+    try{ prods=JSON.parse(localStorage.getItem('vandee_products')||'[]'); }catch(e){}
+    const active=prods.filter(p=>p.active!==false);
+    const isHot=p=>/ขายดี|hot|best|ฮิต/i.test(p.badge||'');
+    let top=active.filter(isHot);
+    active.forEach(p=>{ if(top.length<3 && top.indexOf(p)<0) top.push(p); });
+    top=top.slice(0,3);
+    const medals=['\uD83E\uDD47','\uD83E\uDD48','\uD83E\uDD49'];
+    grid.innerHTML=top.map((p,i)=>{
+      const img = p.imgData ? `<img src="${esc(p.imgData)}" alt="${esc(p.name)}" loading="lazy">`
+        : `<div class="bs-noimg" style="background:${esc(p.color||'#9A2A29')}"><span>${esc(p.label||p.name)}</span></div>`;
+      return `<div class="bs-card">
+        <div class="bs-rank"><span class="medal">${medals[i]}</span>อันดับ ${i+1}</div>
+        <div class="bs-img">${img}</div>
+        <div class="bs-body">
+          <div class="bs-name">${esc(p.name)}</div>
+          <div class="bs-price">${(p.price||0).toLocaleString()} <span class="bs-unit">฿ · ${esc(p.unit||'')}</span></div>
+        </div>
+      </div>`;
+    }).join('');
   }
 
   function syncPublishedProducts(){
