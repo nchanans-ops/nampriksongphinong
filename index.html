@@ -1859,6 +1859,25 @@ nav .logo .logo-main,
   }
   .products-section .section-sub, .categories-section .section-sub{ color:#7a4a32; }
 </style>
+<style id="sectheadAccent">
+  /* Prominent section headers */
+  .products-section .section-label, .categories-section .section-label{
+    display:inline-block;
+    background:linear-gradient(135deg,#9A2A29,#c0392b);
+    color:#fff !important;
+    font-size:12px; font-weight:700; letter-spacing:0.14em;
+    padding:6px 16px; border-radius:30px; margin-bottom:16px;
+    box-shadow:0 5px 14px rgba(154,42,41,0.30);
+  }
+  .products-section .section-title, .categories-section .section-title{
+    position:relative; display:inline-block; padding-bottom:16px;
+  }
+  .products-section .section-title::after, .categories-section .section-title::after{
+    content:''; position:absolute; left:0; bottom:0;
+    width:72px; height:5px; border-radius:3px;
+    background:linear-gradient(90deg,#9A2A29 0%,#e0a020 100%);
+  }
+</style>
 </head>
 <body>
 
