@@ -302,16 +302,19 @@
 
     /* ===== COVER IMAGE ===== */
     .post-cover {
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem 0;
+      background: var(--red-deep);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
     }
     .post-cover img {
       width: 100%;
+      max-width: 780px;
       border-radius: 16px;
       display: block;
       object-fit: cover;
       max-height: 480px;
+      margin: 0 auto;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
     }
     @media (max-width: 600px) {
       .nav-links { display: none; }
