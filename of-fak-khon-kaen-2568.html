@@ -302,9 +302,20 @@
 
     /* ===== COVER IMAGE ===== */
     .post-cover {
-      background: var(--red-deep);
+      background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2762%27%20height%3D%2762%27%20viewBox%3D%270%200%2062%2062%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23e7b13a%27%20stroke-width%3D%271.4%27%20opacity%3D%270.16%27%3E%3Cpath%20d%3D%27M31%204%20L52%2031%20L31%2058%20L10%2031%20Z%27%2F%3E%3Cpath%20d%3D%27M31%2016%20L42%2031%20L31%2046%20L20%2031%20Z%27%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D%2731%27%20cy%3D%2731%27%20r%3D%272.2%27%20fill%3D%27%23f3d27a%27%20opacity%3D%270.30%27%2F%3E%3Cpath%20d%3D%27M0%2031%20L10%2031%20M52%2031%20L62%2031%20M31%200%20L31%204%20M31%2058%20L31%2062%27%20stroke%3D%27%23e7b13a%27%20stroke-width%3D%271.2%27%20opacity%3D%270.18%27%2F%3E%3Ccircle%20cx%3D%270%27%20cy%3D%270%27%20r%3D%271.6%27%20fill%3D%27%23e7b13a%27%20opacity%3D%270.20%27%2F%3E%3Ccircle%20cx%3D%2762%27%20cy%3D%270%27%20r%3D%271.6%27%20fill%3D%27%23e7b13a%27%20opacity%3D%270.20%27%2F%3E%3Ccircle%20cx%3D%270%27%20cy%3D%2762%27%20r%3D%271.6%27%20fill%3D%27%23e7b13a%27%20opacity%3D%270.20%27%2F%3E%3Ccircle%20cx%3D%2762%27%20cy%3D%2762%27%20r%3D%271.6%27%20fill%3D%27%23e7b13a%27%20opacity%3D%270.20%27%2F%3E%3C%2Fsvg%3E") repeat,
+        linear-gradient(135deg,#250f0e 0%,#5e1816 55%,#7a1f1e 100%);
       padding: 2.5rem 1.5rem;
       text-align: center;
+      position: relative;
+    }
+    .post-cover::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 16px;
+      background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2740%27%20height%3D%2716%27%20viewBox%3D%270%200%2040%2016%27%3E%3Crect%20width%3D%2740%27%20height%3D%2716%27%20fill%3D%27%239A2A29%27%2F%3E%3Cpath%20d%3D%27M0%2016%20L10%203%20L20%2016%20L30%203%20L40%2016%20Z%27%20fill%3D%27%23e0b23a%27%2F%3E%3Cpath%20d%3D%27M5%2016%20L10%209%20L15%2016%20Z%27%20fill%3D%27%237a1f1e%27%2F%3E%3Cpath%20d%3D%27M25%2016%20L30%209%20L35%2016%20Z%27%20fill%3D%27%237a1f1e%27%2F%3E%3C%2Fsvg%3E") repeat-x;
+      background-size: auto 16px;
+      z-index: 2;
     }
     .post-cover img {
       width: 100%;
