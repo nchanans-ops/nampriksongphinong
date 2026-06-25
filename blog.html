@@ -370,8 +370,14 @@
   let currentCat = '';
 
   function loadPosts() {
-    try { allPosts = JSON.parse(localStorage.getItem('vandee_posts') || '[]'); } catch(e) { allPosts = []; }
-    allPosts = allPosts.filter(p => p.published !== false).sort((a,b) => b.createdAt - a.createdAt);
+    const POSTS = [
+      { id: "2406170001", title: "จากครัวที่บ้าน สู่ร้านน้ำพริกสองพี่น้อง", category: "เรื่องของเรา", excerpt: "เรื่องราวของน้ำพริกสองพี่น้อง น้ำพริกโฮมเมดที่เริ่มจากสูตรของแม่ ตำเองทุกขวด ไม่ใส่วัตถุกันเสีย", coverImg: "cover-story.jpg", readTime: 4, published: true, createdAt: 1749900000000 },
+      { id: "2406170002", title: "น้ำพริกเผา แห้ง ปลาร้า กินคู่กับอะไรให้อร่อยที่สุด", category: "ไลฟ์สไตล์", excerpt: "น้ำพริกแต่ละชนิดเหมาะกับเมนูไม่เหมือนกัน รวมไอเดียกินน้ำพริกเผา น้ำพริกแห้ง และน้ำพริกปลาร้าให้อร่อยถึงใจ", coverImg: "cover-pairing.jpg", readTime: 3, published: true, createdAt: 1749800000000 },
+      { id: "2406170003", title: "5 เมนูแปรรูปจากน้ำพริก ทำง่ายใน 10 นาที", category: "สูตรอาหาร", excerpt: "น้ำพริกไม่ได้มีไว้แค่จิ้มผัก รวม 5 เมนูที่พลิกน้ำพริกกลายเป็นเมนูหลักง่ายๆ ทำได้ทันที", coverImg: "cover-recipe.jpg", readTime: 4, published: true, createdAt: 1749700000000 },
+      { id: "2406170004", title: "เก็บน้ำพริกยังไงให้อยู่ได้นาน ไม่ขึ้นรา ไม่เสียรส", category: "เคล็ดลับ", excerpt: "น้ำพริกโฮมเมดไม่ใส่วัตถุกันเสีย รวมวิธีเก็บน้ำพริกแห้ง น้ำพริกเผา และน้ำพริกปลาร้าให้อยู่ได้นาน", coverImg: "cover-storage.jpg", readTime: 3, published: true, createdAt: 1749600000000 },
+      { id: "of-fak-khon-kaen-2568", title: "ของฝากขอนแก่น 2568 — น้ำพริกโฮมเมดที่คนท้องถิ่นแนะนำ", category: "ของฝาก", excerpt: "รวมของฝากขอนแก่นยอดนิยม 2568 น้ำพริกโฮมเมดสูตรท้องถิ่น รสแซ่บ ส่งทั่วไทย", coverImg: "cover-story.jpg", readTime: 6, published: true, createdAt: 1750867200000, staticUrl: "of-fak-khon-kaen-2568.html" }
+    ];
+    allPosts = POSTS.filter(p => p.published !== false).sort((a,b) => b.createdAt - a.createdAt);
   }
 
   function buildCatFilter() {
@@ -414,7 +420,7 @@
       : `<div class="featured-img-placeholder"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/></svg></div>`;
 
     let html = `
-      <div class="featured-post" onclick="location.href='blog-post.html?id=${esc(feat.id)}'">
+      <div class="featured-post" onclick="location.href='${feat.staticUrl||'blog-post.html?id='+esc(feat.id)}'">
         <div class="featured-img">${featImg}</div>
         <div class="featured-body">
           ${feat.category ? `<div class="post-cat-badge">${esc(feat.category)}</div>` : ''}
@@ -424,7 +430,7 @@
             <span>${formatDate(feat.createdAt)}</span>
             ${feat.readTime ? `<span class="post-meta-dot"></span><span>${esc(feat.readTime)} นาทีอ่าน</span>` : ''}
           </div>
-          <a href="blog-post.html?id=${esc(feat.id)}" class="btn-read" onclick="event.stopPropagation()">
+          <a href="${feat.staticUrl||'blog-post.html?id='+esc(feat.id)}" class="btn-read" onclick="event.stopPropagation()">
             อ่านบทความ
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -438,7 +444,7 @@
             const img = p.coverImg
               ? `<img src="${esc(p.coverImg)}" alt="${esc(p.title)}" loading="lazy" />`
               : `<div class="post-card-img-placeholder" style="background:linear-gradient(135deg,#8a2828,#c04040);width:100%;height:100%;"></div>`;
-            return `<div class="post-card" onclick="location.href='blog-post.html?id=${esc(p.id)}'">
+            return `<div class="post-card" onclick="location.href='${p.staticUrl||'blog-post.html?id='+esc(p.id)}'">
               <div class="post-card-img">${img}</div>
               <div class="post-card-body">
                 ${p.category ? `<div class="post-card-cat">${esc(p.category)}</div>` : ''}
