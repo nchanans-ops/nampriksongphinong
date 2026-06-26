@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 <html lang="th" data-theme="light">
 <head>
+<script>
+/* Cloud auto-publish: ทุกการบันทึก products/posts/bestsellers/appearance ยิงขึ้น D1 ผ่าน Worker */
+(function(){
+  var API='https://nampriksong-api.n-chanans.workers.dev';
+  var MAP={'vandee_products':'products','vandee_posts':'posts','vandee_bestsellers':'bestsellers','vandee_appearance':'appearance'};
+  var _si=localStorage.setItem.bind(localStorage);
+  localStorage.setItem=function(k,v){
+    _si(k,v);
+    if(MAP[k]){
+      try{
+        var pass=localStorage.getItem('vandee_admin_pass')||'vandee2025';
+        var val; try{val=JSON.parse(v);}catch(e){val=v;}
+        fetch(API+'/api/set',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({k:MAP[k],v:val,pass:pass})}).catch(function(){});
+      }catch(e){}
+    }
+  };
+})();
+</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />

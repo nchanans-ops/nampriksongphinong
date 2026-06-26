@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
+<script>
+/* Cloud sync: ดึงข้อมูลล่าสุดจาก D1 (source of truth) ก่อน render */
+(function(){
+  var API='https://nampriksong-api.n-chanans.workers.dev';
+  try{
+    fetch(API+'/api/all',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
+      if(!d||typeof d!=='object')return;
+      var changed=false;
+      function upd(key,val){ if(val!=null){ var s=JSON.stringify(val); if(localStorage.getItem(key)!==s){ localStorage.setItem(key,s); changed=true; } } }
+      upd('vandee_products', d.products);
+      upd('vandee_posts', d.posts);
+      upd('vandee_bestsellers', d.bestsellers);
+      upd('vandee_appearance', d.appearance);
+      if(changed && !sessionStorage.getItem('cloud_reloaded')){ sessionStorage.setItem('cloud_reloaded','1'); location.reload(); }
+    }).catch(function(){});
+  }catch(e){}
+})();
+</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="น้ำพริกสองพี่น้อง น้ำพริกโฮมเมดสูตรต้นตำรับ ตำสดใหม่ทุกวัน ทั้งน้ำพริกเผา น้ำพริกแห้ง น้ำพริกปลาร้า และชุดของฝาก ส่งตรงจากครัวทั่วไทย สั่งง่าย อร่อยถึงใจ" />
-  <meta name="google-site-verification" content="KqB0tQ2nyN8hsYLg8wT6xVFFi5Lumh-Nfs0AvQ4Q848" />
   <meta name="keywords" content="น้ำพริก, น้ำพริกสองพี่น้อง, น้ำพริกโฮมเมด, น้ำพริกเผา, น้ำพริกปลาร้า, น้ำพริกแห้ง, ของฝาก, สั่งน้ำพริกออนไลน์, ของฝากของกิน" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://nchanans-ops.github.io/nampriksongphinong/" />
