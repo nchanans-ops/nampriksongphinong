@@ -245,6 +245,38 @@
   .cat-btn:hover{ border-color:#e0a020 !important; color:#f3d27a !important; }
   .cat-btn.active{ background:linear-gradient(135deg,#f8de86,#e0a020) !important; border-color:#e0a020 !important; color:#3a2400 !important; }
 </style>
+<style id="blog-card-enhance">
+  /* การ์ดบทความ — เด่นขึ้น ตัวใหญ่ขึ้น */
+  .posts-grid{ gap:30px; }
+  .post-card{ border-radius:16px; border:1px solid rgba(255,255,255,0.10); box-shadow:0 6px 22px rgba(0,0,0,0.22); }
+  .post-card:hover{ box-shadow:0 16px 40px rgba(0,0,0,0.38); transform:translateY(-6px); }
+  .post-card-img{ aspect-ratio:16/10; }
+  .post-card-body{ padding:22px 22px 20px !important; }
+  .post-card-cat{ display:inline-block; background:rgba(154,42,41,0.09); color:var(--red) !important;
+    font-size:11px !important; font-weight:800 !important; letter-spacing:0.10em; padding:5px 13px;
+    border-radius:30px; margin-bottom:12px !important; }
+  .post-card-title{ font-size:19.5px !important; font-weight:800 !important; line-height:1.42 !important;
+    color:var(--charcoal) !important; margin-bottom:10px !important; transition:color 0.2s; }
+  .post-card:hover .post-card-title{ color:var(--red) !important; }
+  .post-card-excerpt{ font-size:14.5px !important; line-height:1.7 !important; color:#55504a !important;
+    -webkit-line-clamp:2; margin-bottom:18px !important; }
+  .post-card-meta{ font-size:12.5px !important; color:#a59c90 !important; padding-top:14px;
+    border-top:1px solid var(--cream-dark); }
+  /* ปุ่มอ่านเล็ก ๆ ในการ์ด */
+  .post-card-body::after{ content:'อ่านบทความ →'; font-family:var(--thai); font-size:13px; font-weight:700;
+    color:var(--red); margin-top:12px; opacity:0; transform:translateX(-6px); transition:opacity 0.25s, transform 0.25s; }
+  .post-card:hover .post-card-body::after{ opacity:1; transform:translateX(0); }
+  /* หัวข้อกลุ่ม "บทความอื่น" ใหญ่ขึ้น */
+  .grid-title{ font-size:28px !important; }
+  @media (max-width:768px){
+    .post-card-title{ font-size:18px !important; }
+    .post-card-excerpt{ font-size:14px !important; }
+  }
+  @media (max-width:480px){
+    .posts-grid{ grid-template-columns:1fr; gap:20px; }
+    .post-card-title{ font-size:18px !important; }
+  }
+</style>
 </head>
 <body>
 
