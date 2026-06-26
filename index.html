@@ -3344,6 +3344,33 @@ nav .logo .logo-main,
   updateCartUI();
 })();
 </script>
+<script id="clean-anchor-nav">
+  /* เลื่อนไปยังส่วนต่าง ๆ แบบ smooth โดยไม่ใส่ # ใน URL */
+  (function(){
+    document.addEventListener('click', function(e){
+      var a = e.target.closest ? e.target.closest('a[href]') : null;
+      if(!a) return;
+      var href = a.getAttribute('href') || '';
+      var m = href.match(/^\/?#(.+)$/);
+      if(!m) return;
+      var el = document.getElementById(m[1]);
+      if(el){
+        e.preventDefault();
+        e.stopPropagation();
+        el.scrollIntoView({behavior:'smooth', block:'start'});
+        try{ history.replaceState(null,'',location.pathname); }catch(_){}
+        var mn = document.getElementById('mobileNav');
+        if(mn && mn.classList.contains('open')){ mn.classList.remove('open'); document.body.style.overflow=''; }
+      }
+    }, true); /* capture: ทำงานก่อน page-transition */
+    window.addEventListener('load', function(){
+      if(location.hash && location.hash.length>1){
+        var el = document.getElementById(location.hash.slice(1));
+        if(el){ setTimeout(function(){ el.scrollIntoView({behavior:'smooth',block:'start'}); try{ history.replaceState(null,'',location.pathname); }catch(_){} }, 300); }
+      }
+    });
+  })();
+</script>
 <script id="page-transition-js">
   // Fade in on load
   document.body.classList.add('page-fade');
