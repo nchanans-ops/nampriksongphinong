@@ -3568,12 +3568,12 @@ setInterval(loadProductsFromAdmin, 5000);`;
     reader.onload = ev => {
       const img = new Image();
       img.onload = () => {
-        const MAX = 1200;
+        const MAX = 900;
         let w = img.width, h = img.height;
         if (w > MAX) { h = Math.round(h*MAX/w); w = MAX; }
         const c = document.createElement('canvas'); c.width = w; c.height = h;
         c.getContext('2d').drawImage(img,0,0,w,h);
-        blogCoverImg = c.toDataURL('image/jpeg',0.82);
+        blogCoverImg = c.toDataURL('image/jpeg',0.6);
         document.getElementById('bImgPreview').src = blogCoverImg;
         document.getElementById('bImgPreview').style.display = 'block';
         document.getElementById('bImgEmpty').style.display = 'none';
